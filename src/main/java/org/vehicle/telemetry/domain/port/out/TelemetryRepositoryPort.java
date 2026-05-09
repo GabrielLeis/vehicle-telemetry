@@ -4,5 +4,5 @@ import org.vehicle.telemetry.domain.model.VehicleTelemetry;
 
 public interface TelemetryRepositoryPort {
 
-    public void save(VehicleTelemetry vehicle);
+    void save(VehicleTelemetry vehicle);
 }

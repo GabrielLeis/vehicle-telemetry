@@ -11,7 +11,7 @@ public class TelemetryProcessingService implements ProcessTelemetryUseCase {
     private final TelemetryRepositoryPort repositoryPort;
     private final AlertPublisherPort alertPublisherPort;
 
-    private static final double MAX_SAEF_TEMP = 110.0;
+    private static final double MAX_SAFE_TEMP = 110.0;
 
     public TelemetryProcessingService(TelemetryRepositoryPort repositoryPort, AlertPublisherPort alertPublisherPort){
         this.repositoryPort = repositoryPort;
@@ -24,7 +24,7 @@ public class TelemetryProcessingService implements ProcessTelemetryUseCase {
         repositoryPort.save(telemetry);
 
         // Verificamos temperatura maxima del motor
-        if(telemetry.getEngineTemperature() > MAX_SAEF_TEMP) {
+        if(telemetry.getEngineTemperature() > MAX_SAFE_TEMP) {
             VehicleAlert alert = new VehicleAlert(
                     telemetry.getVehicleId(),
                     "HIGH_TEMPERATURE",
